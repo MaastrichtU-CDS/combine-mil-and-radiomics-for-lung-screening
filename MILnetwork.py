@@ -131,7 +131,7 @@ loss = tf.reduce_mean(tf.reduce_sum(abs(hypothesis-Y)*abs(hypothesis-Y),axis=1))
 learning_rate = tf.placeholder(tf.float32)
 cost = tf.reduce_mean(loss)
 opt = tf.train.AdamOptimizer(learning_rate).minimize(cost)
-f=open('A:/Dataset/NSCLC Radiogenomics files/LIDC-IDRI/Encoder-decoder Network/ExcelResults/MILdemonstrationresult.txt','w+')
+
 
 with tf.Session() as sess:
     epochs = 500
@@ -142,7 +142,7 @@ with tf.Session() as sess:
     recall_final=[]
     PPV_final=[]
     NPV_final=[]
-    for running in range(10):
+    for running in range(1):
         sess.run(tf.global_variables_initializer())
         total_batch=125
         test_batch=25
@@ -180,16 +180,7 @@ with tf.Session() as sess:
 #        predictresult.append(np.argmax(hypothesis_))
             originalresult.append(np.argmax(Y_))
             possibility.append(hypothesis_[0,1])
-            # print("patient:%3d\toriginalLB:%3d\tpredictLB:%3d\n" % (ibatch2, np.argmax(Y_),np.argmax(hypothesis_)), file = f)
-            # print("alphas:",file=f,end = " ")
-            # for t in range(12):
-            #     print("%.8f" % (alphas_[0,t]),file = f,end = " ")
-            # print("\n",file = f)
-            # for i in range(12):
-            #     for j in range(104):
-            #         print("%.8f" % (radiomics_test2[i,j]),file = f,end = " ")
-                
-            #     print("\n",file=f)
+
             
         
         confusion_mat = confusion_matrix(originalresult, predictresult)
@@ -205,15 +196,5 @@ with tf.Session() as sess:
         recall_final.append(recall)
         PPV_final.append(PPV)
         NPV_final.append(NPV)
-        # print('{}'.format(precision),file = f) 
-        # print('{}'.format(recall), file = f) 
-        # print('{}'.format(auc), file = f) 
-        # print('{}'.format(PPV), file = f)
-        # print('{}'.format(NPV), file = f)
-        # print('precision: {}'.format(precision)) 
-        # print('recall: {}'.format(recall)) 
-        # print('auc: {}'.format(auc)) 
-        # print('auc: {}'.format(PPV))
-        # print('auc: {}'.format(NPV))
 f.close() 
 sess.close() 

@@ -32,7 +32,7 @@ def pares_tf(example_proto):
 
 trainset=tf.data.TFRecordDataset(filenames=['A:/Dataset/FileforLIDC/Summaryexcel/sensitivity analysis/SA40Train10.tfrecords'])
 trainset=trainset.map(pares_tf)
-trainset=trainset.shuffle(3000).repeat(5002).batch(1)
+trainset=trainset.shuffle(3000).repeat(502).batch(1)
 iterator = trainset.make_one_shot_iterator()
 next_patch = iterator.get_next()
 

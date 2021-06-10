@@ -30,13 +30,13 @@ def pares_tf(example_proto):
     Label = tf.reshape(Label, [1])
     return Radiomics, Label
 
-trainset=tf.data.TFRecordDataset(filenames=['A:/Dataset/FileforLIDC/Summaryexcel/sensitivity analysis/SA40Train10.tfrecords'])
+trainset=tf.data.TFRecordDataset(filenames=['./SA40Train10.tfrecords'])
 trainset=trainset.map(pares_tf)
 trainset=trainset.shuffle(3000).repeat(502).batch(1)
 iterator = trainset.make_one_shot_iterator()
 next_patch = iterator.get_next()
 
-testset=tf.data.TFRecordDataset(filenames=['A:/Dataset/FileforLIDC/Summaryexcel/sensitivity analysis/SA40Test10.tfrecords'])
+testset=tf.data.TFRecordDataset(filenames=['./SA40Test10.tfrecords'])
 testset=testset.map(pares_tf)
 testset=testset.shuffle(3000).repeat(11).batch(1)
 iterator2 = testset.make_one_shot_iterator()
@@ -144,7 +144,7 @@ with tf.Session() as sess:
     NPV_final=[]
     for running in range(1):
         sess.run(tf.global_variables_initializer())
-        total_batch=125
+        total_batch=145
         test_batch=25
 
         for e in range(epochs):

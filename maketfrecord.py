@@ -18,10 +18,10 @@ import numpy as np
 import xlrd
 
 
-datafile='A:/Dataset/FileforLIDC/Summaryexcel/normalizedsummary.xlsx'
-datafile2='A:/Dataset/FileforLIDC/Summaryexcel/simulationNegativeSummary.xlsx'
-writer1= tf.python_io.TFRecordWriter("A:/Dataset/FileforLIDC/Summaryexcel/sensitivity analysis/SA40Train10.tfrecords") 
-writer2= tf.python_io.TFRecordWriter("A:/Dataset/FileforLIDC/Summaryexcel/sensitivity analysis/SA40Test10.tfrecords")
+datafile='./Summaryexcel/normalizedsummary.xlsx'
+datafile2='./simulationNegativeSummary.xlsx'
+writer1= tf.python_io.TFRecordWriter("./SA60Train2.tfrecords") 
+writer2= tf.python_io.TFRecordWriter("./SA60Test2.tfrecords")
 
 count=0
 count2=0
@@ -64,7 +64,7 @@ for patient in range(109):
         count2=count2+1
         writer2.write(example.SerializeToString())  
 count3=0  
-for patient in range(41):
+for patient in range(61):
     roiradiomic=[]
     label=[]
     for i in range(12):

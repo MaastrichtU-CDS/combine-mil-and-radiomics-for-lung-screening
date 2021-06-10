@@ -196,5 +196,5 @@ with tf.Session() as sess:
         recall_final.append(recall)
         PPV_final.append(PPV)
         NPV_final.append(NPV)
-f.close() 
+
 sess.close() 

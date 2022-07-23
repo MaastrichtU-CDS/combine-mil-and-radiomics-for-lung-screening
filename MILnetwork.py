@@ -196,5 +196,10 @@ with tf.Session() as sess:
         recall_final.append(recall)
         PPV_final.append(PPV)
         NPV_final.append(NPV)
+        print("AUC:{} ".format(AUC_final[0]))
+        print("Accuracy:{}".format(precision_final[0]))
+        print("Recall:{}".format(recall_final[0]))
+        print("NPV:{}".format(NPV_final[0]))
+        print("PPV:{}".format(PPV_final[0]))
 
 sess.close() 
